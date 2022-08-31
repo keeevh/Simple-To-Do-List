@@ -14,7 +14,7 @@ body {
 }
 
 .divider {
-    width: 45%;
+    width: 40%;
     height: 5px;
     background: rgb(32, 255, 169);
     margin-bottom: 10px;
@@ -24,6 +24,7 @@ body {
     margin: 0;
     padding: 0;
     margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
 .header h3 {
