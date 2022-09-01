@@ -20,6 +20,7 @@ let taskArr = [
 
 // Function to display Tasks in the App Container
 const showTasks = () => {
+  app.innerHTML = "";
   for (let i = 0; i < taskArr.length; i++) {
     let taskCard = `
             <div class="task-card">
@@ -55,6 +56,3 @@ addTask.addEventListener("click", (event) => {
 });
 
 // Enable Edit, Delete and Done function
-taskArr.forEach((el) => {
-  
-});
