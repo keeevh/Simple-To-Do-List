@@ -11,7 +11,7 @@ let taskArr = [
   },
   {
     title: "Finishing Project Presentation",
-    category: "🕑  Work",
+    category: "🕑  Business",
     enableEdit: false,
   },
   {
@@ -23,7 +23,7 @@ let taskArr = [
 
 // Function to display Tasks in the App Container
 const showTasks = () => {
-  app.innerHTML = "";
+  app.innerHTML = `<h2>You currently have ${taskArr.length} commitments</h2>`;
   for (let i = 0; i < taskArr.length; i++) {
     let taskCard = `
             <div class="task-card">
@@ -33,15 +33,17 @@ const showTasks = () => {
     }" /disabled />
                     <div class="card-lower">
                         <p>${taskArr[i].category}</p>
-                        <button class="task-button editBtn${[
-                          i,
-                        ]}"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="task-button deleteBtn${[
-                          i,
-                        ]}"><i class="fa-solid fa-trash-can"></i></button>
-                        <button class="task-button checkBtn${[
-                          i,
-                        ]}"><i class="fa-solid fa-check"></i></button>
+                        <div>
+                          <button class="task-button editBtn${[
+                            i,
+                          ]}"><i class="fa-solid fa-pencil"></i></button>
+                          <button class="task-button deleteBtn${[
+                            i,
+                          ]}"><i class="fa-solid fa-trash-can"></i></button>
+                          <button class="task-button checkBtn${[
+                            i,
+                          ]}"><i class="fa-solid fa-check"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>

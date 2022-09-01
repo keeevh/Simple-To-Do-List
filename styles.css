@@ -17,7 +17,7 @@ body {
     width: 40%;
     height: 5px;
     background: rgb(32, 255, 169);
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .header h1 {
@@ -25,12 +25,6 @@ body {
     padding: 0;
     margin-bottom: 5px;
     text-transform: uppercase;
-}
-
-.header h3 {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 25px;
 }
 
 .header form {
@@ -66,6 +60,12 @@ form button {
     padding: 40px 5% 50px 5%;
 }
 
+.app h2 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 25px;
+}
+
 .task-card {
     max-width: 90%;
     margin: 10px auto;
@@ -83,6 +83,7 @@ form button {
 .card-lower {
     display: flex;
     margin-top: 10px;
+    justify-content: space-between;
 }
 
 .task-button {
@@ -90,7 +91,6 @@ form button {
     width: 30px;
     background: #303030;
     color: white;
-    margin-right: 10px;
     border: none;
     border-radius: 5px;
 }
@@ -115,7 +115,7 @@ form button {
     margin: 0 10px 0 0;
     padding: 5px 10px;
     border-radius: 5px;
-    max-width: 75px;
+    width: 75px;
     color: white;
     font-size: 12px;
     background: #303030;
