@@ -71,18 +71,29 @@ addTask.addEventListener("click", (event) => {
 // Enable Edit, Delete and Done function
 for (let i = 0; i < taskArr.length; i++) {
   // Edit Task
-  let getEditBtn = ".editBtn" + [i];
-  let editBtn = document.querySelector(getEditBtn);
-  let getTaskTitle = ".taskTitle" + [i];
-  let taskTitle = document.querySelector(getTaskTitle);
+  const getEditBtn = ".editBtn" + [i];
+  const editBtn = document.querySelector(getEditBtn);
+  const getDeleteBtn = ".deleteBtn" + [i];
+  const deleteBtn = document.querySelector(getDeleteBtn);
+  const getCheckBtn = ".checkBtn" + [i];
+  const checkBtn = document.querySelector(getCheckBtn);
+  const getTaskTitle = ".taskTitle" + [i];
+  const taskTitle = document.querySelector(getTaskTitle);
 
   editBtn.addEventListener("click", () => {
     if (taskArr[i].enableEdit === false) {
+      // makes title editable and modifies edit button
       taskTitle.disabled = false;
       taskTitle.focus();
       taskArr[i].enableEdit = true;
       editBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
       editBtn.style.background = "rgb(241, 182, 22)";
+
+      // deactivates check & delete button
+      deleteBtn.disabled = true;
+      deleteBtn.style.opacity = "25%";
+      checkBtn.disabled = true;
+      checkBtn.style.opacity = "25%";
 
       editBtn.addEventListener("click", (e) => {
         taskArr[i].title = taskTitle.value;
