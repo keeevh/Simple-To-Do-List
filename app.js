@@ -28,14 +28,29 @@ let doneTasks = [];
 
 // Function to display Tasks in the App Container
 const showTasks = () => {
-  app.innerHTML = `<h2>You currently have ${taskArr.length} commitments</h2>`;
+  if (taskArr.length === 0) {
+    app.innerHTML = `
+    <h2>You don't have any commitments</h2>
+    <p>Add a task to get started!</p>
+    `;
+  } else if (taskArr.length === 1) {
+    app.innerHTML = `
+    <h2>You have 1 commitment</h2>
+    <p>Looking good so far, keep going!</p>
+    `;
+  } else {
+    app.innerHTML = `
+    <h2>You have ${taskArr.length} commitments</h2>
+    <p>Time to get things done!</p>
+    `;
+  }
 
   // refreshs the app.js content
   for (let i = 0; i < taskArr.length; i++) {
     let taskCard = `
             <div class="task-card">
                 <div class="task-card-left">
-                    <input class="taskTitle${[i]}" type="textarea" value="${
+                    <input class="taskTitle${[i]}" type="text" value="${
       taskArr[i].title
     }" /disabled />
                     <div class="card-lower">
@@ -47,7 +62,7 @@ const showTasks = () => {
                           <button class="task-button deleteBtn${[
                             i,
                           ]}"><i class="fa-solid fa-trash-can"></i></button>
-                          <button class="task-button checkBtn${[
+                          <button class="task-button greenBG checkBtn${[
                             i,
                           ]}"><i class="fa-solid fa-check"></i></button>
                         </div>
@@ -68,7 +83,7 @@ const showTasks = () => {
     const checkBtn = document.querySelector(getCheckBtn);
     const getTaskTitle = ".taskTitle" + [i];
     const taskTitle = document.querySelector(getTaskTitle);
-    
+
     editBtn.addEventListener("click", () => {
       if (taskArr[i].enableEdit === false) {
         // makes title editable and modifies edit button
@@ -114,6 +129,18 @@ const showTasks = () => {
       /* deleteBtn.parentElement.parentElement.parentElement.parentElement.remove(); */
     });
   }
+
+  // removes task from array and pushes to new array
+  for (let i = 0; i < taskArr.length; i++) {
+    const getCheckBtn = ".checkBtn" + [i];
+    const checkBtn = document.querySelector(getCheckBtn);
+
+    checkBtn.addEventListener("click", () => {
+      let currentTask = taskArr.splice([i], 1);
+      doneTasks.push(currentTask);
+      showTasks();
+    });
+  }
 };
 
 // Initialize the Array in the App
@@ -123,11 +150,16 @@ showTasks();
 addTask.addEventListener("click", (event) => {
   event.preventDefault();
 
-  newTask = {
-    title: taskTitle.value,
-    category: taskCat.options[taskCat.selectedIndex].value,
-  };
+  if (taskTitle.value === "") {
+    alert("You have to enter a task to submit!");
+  } else {
+    newTask = {
+      title: taskTitle.value,
+      category: taskCat.options[taskCat.selectedIndex].value,
+    };
 
-  taskArr.push(newTask);
-  showTasks();
+    taskArr.push(newTask);
+    showTasks();
+    taskTitle.value = "";
+  }
 });
