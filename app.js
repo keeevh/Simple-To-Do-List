@@ -5,23 +5,11 @@ const app = document.querySelector(".app");
 
 let taskArr = [
   {
-    title: "Tidy up living room",
+    title: "Edit, delete and complete me!",
     category: "❤️ Personal",
     enableEdit: false,
     active: true,
-  },
-  {
-    title: "Finishing Project Presentation",
-    category: "🕑  Business",
-    enableEdit: false,
-    active: true,
-  },
-  {
-    title: "Studying JavaScript & React",
-    category: "🎓 Learning",
-    enableEdit: false,
-    active: true,
-  },
+  }
 ];
 
 let doneTasks = [];
